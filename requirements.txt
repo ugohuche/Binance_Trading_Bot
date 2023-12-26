@@ -1,0 +1,8 @@
+Flask
+moralis
+python-dotenv
+execute
+python-binance
+pandas
+numpy
+requests
