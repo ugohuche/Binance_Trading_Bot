@@ -71,3 +71,34 @@ def execute_analysis_and_trade(buy_or_sell):
                 else:
                     print("Not Selling ETH")
                     print(f"Reason: The analysis is {analysis}")
+
+def check_price_condition_and_trade():
+    project_settings = get_settings(import_path)
+
+    api_key = project_settings["BinanceKeys"]["API_KEY"]
+    secret_key = project_settings["BinanceKeys"]["SECRET_KEY"]
+
+    ETH = project_settings["Tokens"]["ETH"]
+    BTCB = project_settings["Tokens"]["BTCB"]
+    BUSD = project_settings["Tokens"]["BUSD"]
+
+    # Check the new strategy for buying every 1 minute
+    if strategy.check_price_condition(ETH, 2000):  # Replace 2000 with your target price
+        print("Buying ETH based on price condition")
+        eth_pair = binance_connect.query_quote_asset_list("BTC").loc[
+            binance_connect.query_quote_asset_list("BTC")["symbol"] == "ETHBTC"
+        ]
+        symbol = eth_pair["symbol"].values[0]
+        params = strategy.calculate_buy_params(symbol, eth_pair, "1h")
+        response = binance_connect.make_trade_with_params(params, project_settings)
+        print(response)
+    else:
+        print("Not Buying ETH based on price condition")
+
+# Schedule the task to run every 1 minute
+schedule.every(1).minutes.do(check_price_condition_and_trade)
+
+# Run the scheduler
+while True:
+    schedule.run_pending()
+    time.sleep(1)

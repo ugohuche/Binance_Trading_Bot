@@ -19,7 +19,18 @@ def get_and_transform_data(symbol, timeframe, number_of_candles):
     # return de data frame
     return df
 
+# Add this function to strategy.py
+def check_price_condition(symbol, target_price):
+    # Get the current price
+    current_price = binance_connect.get_token_price(symbol, "bsc")
 
+    # Check if the current price is below the target price
+    if current_price < target_price:
+        return True
+    else:
+        return False
+    
+ 
 # Get the token price
 def get_token_price(address, chain):
     # Make API call to get the price
