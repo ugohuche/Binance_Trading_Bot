@@ -76,6 +76,18 @@ The bot will continuously check for trading opportunities and execute trades bas
 
 A new strategy has been added to the execute.py file. This strategy checks the price of a specific coin (e.g., ETH) every minute. If the price falls below a certain threshold, the bot will execute a buy action.
 
+
 To customize the threshold and target coin, modify the
+
    ```bash
    check_price_condition_and_trade function in execute.py
+   ```
+Feel free to update the code
+   ```bash
+   Replace `"your_moralis_api_key"` with your actual Moralis API key and update any other project-specific details. Save this content in your `README.md` file within the root directory of your project.
+```
+
+## Authors
+
+- [obylo98](https://www.github.com/obylo98)
+- [ugohuche](https://github.com/ugohuche)
