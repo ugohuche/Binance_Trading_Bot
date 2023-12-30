@@ -22,8 +22,8 @@ Before running the bot, make sure you have the following:
 Install dependencies:
 
 Copy code
-   ```bash
-  pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
 
 2. Install dependencies:
 
