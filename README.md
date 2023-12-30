@@ -19,11 +19,7 @@ Before running the bot, make sure you have the following:
 
    ```bash
    git clone https://github.com/yourusername/binance-trading-bot.git
-Install dependencies:
-
-Copy code
-    ```bash
-    pip install -r requirements.txt
+   
 
 2. Install dependencies:
 
